@@ -1,11 +1,16 @@
 import { Row, Col } from "react-bootstrap";
-import products from "../product-mockData.js";
-import React from "react";
-import Product from "../components/Product.jsx";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Product from "../components/Product";
 const HomeScreen = () => {
-  console.log(products); // This will log the entire array of products
-
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get("/api/products");
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
   return (
     <>
       <h1>Latest Products</h1>
