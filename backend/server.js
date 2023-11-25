@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 dotenv.config();
 import connectDB from "./config/db.js";
 
@@ -18,6 +19,9 @@ const app = express();
 // Body parse middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Cookie parser middleware
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send("API is running...");
