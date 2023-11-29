@@ -8,9 +8,10 @@ const addOrderItems = asyncHandler(async (req, res) => {
   const {
     orderItems,
     shippingAddress,
-    paymentMethods,
+    paymentMethod,
     itemsPrice,
     taxPrice,
+    shippingPrice,
     totalPrice,
   } = req.body;
 
@@ -26,7 +27,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
       })),
       user: req.user._id,
       shippingAddress,
-      paymentMethods,
+      paymentMethod,
       itemsPrice,
       taxPrice,
       shippingPrice,
