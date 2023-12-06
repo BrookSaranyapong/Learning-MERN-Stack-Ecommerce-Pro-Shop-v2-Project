@@ -68,6 +68,7 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @access  Private
 const updateOrderToPaid = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
+
   if (order) {
     order.isPaid = true;
     order.paidAt = Date.now();
@@ -79,7 +80,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     };
     const updatedOrder = await order.save();
 
-    res.status(200).json(updatedOrder);
+    res.json(updatedOrder);
   } else {
     res.status(404);
     throw new Error("Order not found");
