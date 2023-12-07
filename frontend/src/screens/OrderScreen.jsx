@@ -80,12 +80,12 @@ const OrderScreen = () => {
       orderId,
       details: { payer: {} },
     });
-
-    console.log("Payment details:", {
-      orderId,
-      details: { payer: {} },
-    });
     refetch();
+
+    // console.log("Payment details:", {
+    //   orderId,
+    //   details: { payer: {} },
+    // });
 
     toast.success("Order is paid");
   }
@@ -209,12 +209,12 @@ const OrderScreen = () => {
                     <Loader />
                   ) : (
                     <div>
-                      <Button
+                      {/* <Button
                         style={{ marginBottom: "10px" }}
                         onClick={onApproveTest}
                       >
                         Test Pay Order
-                      </Button>
+                      </Button> */}
 
                       <div>
                         <PayPalButtons
