@@ -18,12 +18,12 @@ const storage = multer.diskStorage({
 function checkFileType(file, cb) {
   const filetypes = /jpg|jpeg|png/;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-
   const mimetype = filetypes.test(file.mimetype);
+
   if (extname && mimetype) {
     return cb(null, true);
   } else {
-    cb("Images only!");
+    cb({ message: "Images only!" });
   }
 }
 
@@ -33,8 +33,8 @@ const upload = multer({
 
 router.post("/", upload.single("image"), (req, res) => {
   res.send({
-    message: "Image Uploaded",
-    image: `/${req.file.path}`,
+    message: "Image uploaded successfully",
+    image: `/${req.file.path.replace(/\\/g, "/")}`,
   });
 });
 
